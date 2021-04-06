@@ -1,15 +1,20 @@
 import './App.css';
-// import "bootstrap/dist/css/bootstrap.min.css";
-import Footer from './components/Footer.jsx';
-import Header from './components/Header.jsx';
-import ProductAPI from './components/ProductAPI.jsx';
+import Home from './admin/HomePage';
+import AdminPage from './admin/AdminPage.jsx';
+import { Route } from 'react-router';
 
 function App() {
   return (
     <div>
-    <Header />
-    <ProductAPI />
-    <Footer />
+      <Route path={'/'} exact>
+        <Home />
+
+      </Route>
+
+      <Route path={'/Admin'}>
+        <AdminPage />
+
+      </Route>
     </div>
   );
 }
