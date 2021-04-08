@@ -1,23 +1,30 @@
-import React from 'react'
-import styled from 'styled-components'
-import Item from '../components/Item'
+import React, {useState, useEffect} from 'react'
 
 
-function ItemPage({item, getItem}) {
+
+function ItemPage({ match }) {
+
+    useEffect (()=>{
+        fetchItem();
+    }, []);
+
+    const [item, setItem] = useState({});
+
+    const fetchItem = async () => {
+        console.log(match)
+        const fetchItem = await fetch(`http://localhost:5000/products/${match.params.id}`);
+        const item = await fetchItem.json();
+        setItem(item);
+        console.log(item);
+    };
+
 
     return (
         <div>
-            hej
-
+            <h1>Item</h1>
+            <p>{item.title}</p>
         </div>
-    )
+    );
 }
 
 export default ItemPage
-
-const SelectedItem = styled.div`
-justify-content: center;
-align-items: center;
-
-`
-
