@@ -7,16 +7,8 @@ function ItemPage({item, getItem}) {
 
     return (
         <div>
-            {item ?
-            <SelectedItem>
-                <Item key={item['_id']} item={item} getItem={getItem} />
+            hej
 
-                
-
-            </SelectedItem>
-
-: console.log('finns inte')}
-            
         </div>
     )
 }

@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import CreateItem from '../components/CreateItem'
+import ProductAPI from '../components/ProductAPI'
 
 const AdminPage = () => {
 
@@ -32,6 +33,8 @@ const AdminPage = () => {
                     </>
                     )
                     : null}
+
+                <ProductAPI />
             </Content>
            
          
