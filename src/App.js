@@ -7,9 +7,17 @@ import {
 } from "react-router-dom";
 import ItemPage from './admin/ItemPage';
 import Header from './components/Header';
+import ProductAPI from './components/ProductAPI';
+import Items from './components/Items';
 
 
 function App() {
+
+  
+
+  
+
+  
   return (
 
     <Router>
@@ -22,9 +30,11 @@ function App() {
       </Route>
       <Route path={'/Item/:id'} component={ItemPage} />      {/* skickar inte id */}
       {/* <Route path={'/Item/:id'} component={ItemPage}> */}
-      <Route path={'/Admin'}>
+      {/* <Route path={'/Admin'}>
         <AdminPage />
-      </Route>
+
+      </Route> */}
+      <Route path={'/Admin'} component={AdminPage} />
     </div>
     </Router>
   );

@@ -1,204 +1,164 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
+import CreateItem from '../components/CreateItem'
+import Item from '../components/Item'
+import Items from '../components/Items'
+// import {Link} from 'react-router-dom'
+// import Items from '../components/Items';
+// import ProductAPI from '../components/ProductAPI'
 
 
-const CreateItem = () => {
+
+
+
+const AdminPage = () => {
+
+
+    const [item, setItem] = useState([]);
+
+    useEffect (()=>{
+        fetchProducts(); //fetchPuns{};
+    }, [])
+
+    const fetchProducts = async () => {
+        try{
+            const response = await fetch ('http://localhost:5000/products/');
+            if (!response.ok) {
+                throw new Error('HTTP Error! status: ' + response.status);
+             }
+            const data = await response.json();
+            setItem(data);
+            console.log(data);
+        }catch(error){
+            console.log(error);
+        }
+    }  
+
+    
+
+    const [newItem, setNewItem] = useState(false)
+    
+    
 
 
     return (
 
-        <Wrapper >
-           
-            <CreateItemContainer >
-                <Item>
-                    <Table>
-                      <Thead>
-                        <TitleCompartment>
-                            <TitleTitle class='prop__name' data-prop-name='Title'>Title
-                            </TitleTitle>
-                            <TitleInput  placeholder="Write Title Here..." />
-                          
-                        </TitleCompartment>
-                        <DescriptionCompartment>
-                            <DescriptionTitle class='prop__name' data-prop-name='Title'>Description
-                            </DescriptionTitle>
-                        <DescriptionInput  placeholder="Write Description Here..." />
-                        </DescriptionCompartment>
-                        <InfoRow>
-                            <PriceCompartment>
-                                <PriceTitle class='prop__name' data-prop-name='Price'>Price
-                                </PriceTitle>
-                                <PriceInput  placeholder="Write Price Here..." />
+        
+        <Content>
+             <CreateItemButton onClick={() => setNewItem(prevState => !prevState)}
+             >
+                 Create Item
+             </CreateItemButton>
+                 {newItem ? (
+             <CreateItem />
+
+             )
+             : undefined}
+
+
+
+                <table>
+                    <thead>
+                        
+
+                    </thead>
+                    <tbody>
+                    <tr>
+                            <tr>
+
+                         
+                                <th>Product</th>
+                                <th>Description</th>
+                                <th>Price</th>
+                                <th>Stock</th>
+                    
+                            </tr>
+                            
+                            {item.map( Items => (
+                                <>
+
+                                <tr>
+                                    <td>
+                                    {Items.title}
+                                    </td>
+                                    <td>
+                                    {Items.description}
+                                    </td>
+                                    <td>
+                                    {Items.price}
+                                    </td>
+                                    <td>
+                                    {Items.stock}
+                                    </td>
+                                    
                                 
 
-                            </PriceCompartment>
-                            <StockCompartment>
-                                <StockTitle class='prop__name' data-prop-name='Stock'>Stock
-                                </StockTitle>
-                                <StockInput  placeholder="Write Stock Here..." />
+                                </tr>
+
+                                </>
+                            ))}
+                       
+                    
+                    </tr>
+                   
+                    
+                    
+                    </tbody>
+   
+                </table>
+             
+             <>
+          
+        </>
 
 
-                            </StockCompartment>
-                            <CategoryCompartment>
-                                <CategoryTitle class='prop__name' data-prop-name='Category'>Category
-                                </CategoryTitle>
-                                <CategorySelect >
-                                    <option value="Hoodies">Hoodies</option>
-                                    <option value="Socks">Socks</option>
-                                    <option value="Pants">Pants</option>
+                    
+        </Content>
+                )
+        }
 
-                                </CategorySelect>
+export default AdminPage
 
 
-                            </CategoryCompartment>
-                        </InfoRow>
-                        <ImageCompartment>
-                            <ImageTitle class='prop__name' data-prop-name='Image'>Image
-                                </ImageTitle>
-                                <ImageInput  placeholder="Enter Image Here..." />
-                        </ImageCompartment>
-                      </Thead>
-                      <tbody></tbody>
-                    </Table>
-                </Item>
-            </CreateItemContainer>
-        </Wrapper>
 
-        )
+const Content = styled.div`
+height: 100%;
+border: 1px black solid;
+background-color: #c0b0b0
+`
+
+const CreateItemButton = styled.button`
+margin: 8px 0 8px 45px;
+    font-weight: 100;
+    color: black;
+    font-size: 1rem;
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    border-radius: 2rem;
+    background: #0c0c0c;
+    outline: none;
+    color: white;
+    cursor: pointer;
+    padding: 1rem 0.5rem;
+    animation: animate 2s linear infinite;
+
+@keyframes animate {
+    10%{
+        box-shadow: 0 0 0 0 #fbfcfd;
+    }
+    45%{
+        box-shadow: 0 0 0 0 #fbfcfd, 0 0 4px 0 #fbfcfd;
+    }
+    75%{
+        box-shadow: 0 0 0 0 #fbfcfd, 0 0 8px 0 #fbfcfd;
+    }
+    100%{
+        box-shadow: 0 0 0 #fbfcfd;
+    }
 }
-
-export default CreateItem
-
-const Wrapper = styled.div`
 `
-
-  
-
-
-const CreateItemContainer = styled.div`
-position: absolute;
-top: 50%;
-left: 50%;
-z-index: 2;
-transform: translate(-50%, -50%);
-background-color: transparent;
-padding: 0.5rem 1rem;
-border-radius: 0.5rem;
-display: flex;
-justify-content: center;
-align-items: center;
-`
-
-const Item = styled.div`
-background-color: white;
-height: 500px;
-width: 500px;
-padding: 10px;
-`
-
-const TitleCompartment = styled.tr`
-width: 500px;
-height: 100px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-`
-
-const TitleTitle = styled.h3`
-align-items: top;
-`
-
-const TitleInput = styled.input`
-width: 300px;
-height: 25px;
-align-self: center;
-`
-const DescriptionCompartment = styled.tr`
-width: 500px;
-height: 200px;
-display: flex;
-justify-content: space-between;
-align-items: top;
-`
-
-const DescriptionTitle = styled.h3`
-
-`
-
-const DescriptionInput = styled.input`
-width: 300px;
-height: 150px;
-align-self: center;
-`
-
-const InfoRow = styled.tr`
-align-items: center;
-width: 500px;
-height: 100px;
-display: flex;
-justify-content: space-between;
-`
-
-const PriceCompartment = styled.th`
-
-`
-
-const PriceTitle = styled.h3` 
-
-`
-const PriceInput = styled.input`
-width: 100px;
-height: 25px;
-`
-
-const StockCompartment = styled.th`
-
-`
-
-const StockTitle = styled.h3` 
-
-`
-const StockInput = styled.input`
-width: 100px;
-height: 25px;
-`
-
-const CategoryCompartment = styled.th`
-
-`
-
-const CategoryTitle = styled.h3` 
-
-`
-const CategorySelect = styled.select`
-width: 100px;
-height: 25px;
-`
-
-const ImageCompartment = styled.tr`
-width: 500px;
-height: 100px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-`
-
-const ImageTitle = styled.h3` 
-
-`
-const ImageInput = styled.input`
-width: 400px;
-height: 25px;
-`
-
 const Table = styled.table`
-min-height: 500px;
-min-width: 500px;
-`
-
-const Thead = styled.thead`
-
-width: 100%;
+width: 50px;
 
 `
-
