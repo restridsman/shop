@@ -8,12 +8,14 @@ import {
 import ItemPage from './admin/ItemPage';
 import Header from './components/Header';
 
+
 function App() {
   return (
 
     <Router>
     <div>
     <Header />
+    
       <Route path={'/'} exact>
         <Home />
 

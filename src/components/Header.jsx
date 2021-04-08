@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import styled from 'styled-components'
 
 
 
@@ -8,7 +7,13 @@ const Header = () => {
     
     return (
         <nav className= 'main-nav'>
-            <Link to="/Admin">Admin</Link>
+            {/* <input className="search" type="text" placeholder="Search.."/> */}
+            <h1>REMAOS</h1>
+            <div className="links">
+                <i class="fas fa-shopping-cart"></i>
+                <Link to="/Admin"><i class="fas fa-user-shield"></i></Link> 
+                {/* toggle <i class="fas fa-sign-out-alt"></i> */}
+            </div>
         </nav>
             
         
@@ -17,23 +22,3 @@ const Header = () => {
 
 export default Header
 
-
-    // const Container = styled.div`
-    // height: 300 px;
-    // display: flex;
-    // justify-content: space-between;
-    // background-color: lightgrey;
-    // `
-    
-    // const LogoContainer = styled.div`
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-    // `
-    
-    // const Logo = styled.img`
-    // width: 150px;
-    // height: 150px;
-    // align-self: center;
-    // justify-self: center;
-    // `

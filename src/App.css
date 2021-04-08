@@ -10,53 +10,76 @@ body{
 }
 
 .main-nav{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   background-color: rgba(221, 221, 221, 0.863);
-  padding: 30px;
+  padding: 50px;
+  margin-left: 8%;
+  margin-right: 8%;
+}
+
+.links{
+  display: flex;
+  flex-direction: row;
+  width: 60px;
+  justify-content: space-between;
+  align-self: flex-end;
+}
+
+i{
+  color: black;
 }
 
 .item-container{
-  max-width: 350px;
-  margin: 30px ;
-  background-color: aqua;
+  width: 350px;
+  width: 300px;
+  margin: 50px ;
+  background-color: rgb(228, 228, 228);
   display: flex;
   flex-direction: column;
+  overflow: hidden; 
 }
 
 .text{
   padding: 20px;
+  background-color: rgb(228, 228, 228);
+  z-index: 100;
+  font-size: 13px;
 }
+
 
 .image{
   padding: 20px;
+ 
 }
 
 .items-conatiner{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  background-color: hotpink;
+  justify-content: center;
 }
 
 img{
-  min-width: 300px;
-  min-height: 300px;
+  width: 300px;
+  height: 380px;
+  transition: transform 0.3s;
 }
+
+img:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
 h3{
-  font-weight: 200;
-  text-align: center;
+  font-weight: 500;
+ 
 }
 
 p{
-  margin: 5px;
+  margin-top: 5px;
   font-weight: 100;
-  text-align: center;
 }
 
-.link{
-  margin: auto;
-  text-decoration: none;
-  color: black;
-  margin-bottom: 5px;
-  border: 1px solid black;
-  width: 70px;
-}
+
