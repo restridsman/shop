@@ -1,48 +1,31 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+
+
 
 function ItemPage({ match }) {
-    console.log(match)
+
+    useEffect (()=>{
+        fetchItem();
+    }, []);
+
+    const [item, setItem] = useState({});
+
+    const fetchItem = async () => {
+        console.log(match)
+        const fetchItem = await fetch(`http://localhost:5000/products/${match.params.id}`);
+        const item = await fetchItem.json();
+        setItem(item);
+        console.log(item);
+    };
+
+
     return (
         <div>
-            <h1>Single Item</h1>
-            <p>hej</p>
+            <h1>Item</h1>
+            <p>{item.title}</p>
         </div>
-    )
+    );
 }
 
 export default ItemPage
-
-
-
-// import React from 'react'
-// // import styled from 'styled-components'
-// // import Item from '../components/Item'
-
-
-// function ItemPage({item, getItem}) {
-
-//     return (
-//         <div>
-//             <h1>Singel Item</h1>
-//             {/* {item ?
-//             <SelectedItem>
-//                 <Item key={item['_id']} item={item} getItem={getItem} />
-
-                
-
-//             </SelectedItem>
-
-// : console.log('finns inte')} */}
-            
-//         </div>
-//     )
-// }
-
-// export default ItemPage
-
-// // const SelectedItem = styled.div`
-// // justify-content: center;
-// // align-items: center;
-
-// // `
 

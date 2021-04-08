@@ -7,33 +7,33 @@ import styled from 'styled-components'
 const Header = () => {
     
     return (
-        <Container>
-            <LogoContainer>
-                <Logo src="/Mor_Logga.jpg"/>
-            </LogoContainer>
-            {/* to = href men funkar bara på ens egna domän.*/}
+        <nav className= 'main-nav'>
             <Link to="/Admin">Admin</Link>
-        </Container>
+        </nav>
+            
+        
     )
 }
 
 export default Header
 
 
-    const Container = styled.div`
-    display: flex;
-    justify-content: space-between;
-    `
+    // const Container = styled.div`
+    // height: 300 px;
+    // display: flex;
+    // justify-content: space-between;
+    // background-color: lightgrey;
+    // `
     
-    const LogoContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    `
+    // const LogoContainer = styled.div`
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // `
     
-    const Logo = styled.img`
-    width: 150px;
-    height: 150px;
-    align-self: center;
-    justify-self: center;
-    `
+    // const Logo = styled.img`
+    // width: 150px;
+    // height: 150px;
+    // align-self: center;
+    // justify-self: center;
+    // `

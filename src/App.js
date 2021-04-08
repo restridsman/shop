@@ -6,20 +6,20 @@ import {
   Route
 } from "react-router-dom";
 import ItemPage from './admin/ItemPage';
+import Header from './components/Header';
 
 function App() {
   return (
 
     <Router>
     <div>
+    <Header />
       <Route path={'/'} exact>
         <Home />
 
       </Route>
-      <Route path={'/Item/:id'} component={ItemPage}>      {/* skickar inte id */}
+      <Route path={'/Item/:id'} component={ItemPage} />      {/* skickar inte id */}
       {/* <Route path={'/Item/:id'} component={ItemPage}> */}
-        <ItemPage />
-      </Route>
       <Route path={'/Admin'}>
         <AdminPage />
       </Route>
