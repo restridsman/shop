@@ -33,4 +33,3 @@ function ItemPage({ match }) {
 }
 
 export default ItemPage
-
