@@ -1,11 +1,15 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components'
 
+
 const CreateItem = () => {
+
+
     return (
 
-        <Wrapper>
-            <CreateItemContainer>
+        <Wrapper >
+           
+            <CreateItemContainer >
                 <Item>
                     <Table>
                       <Thead>
@@ -37,26 +41,19 @@ const CreateItem = () => {
 
 export default CreateItem
 
-const Wrapper = styled.div`
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  transform: scale(1.1);
-  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
-  z-index: 999;
-`
+const Wrapper = styled.div``
+
+  
+
+
 const CreateItemContainer = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
+  z-index: 2;
   transform: translate(-50%, -50%);
   background-color: transparent;
   padding: 0.5rem 1rem;
-  width: 100%;
-  height: 100%;
   border-radius: 0.5rem;
 display: flex;
 justify-content: center;

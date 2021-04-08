@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import Items from './Items';
 
 function ProductAPI() {
-    const [items, setItems] = useState ([]);
+    const [items, setItems] = useState([]);
 
     useEffect (()=>{
         fetchProducts(); //fetchPuns{};

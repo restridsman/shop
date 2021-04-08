@@ -9,24 +9,32 @@ const AdminPage = () => {
 
     return (
         <Wrapper>
+           
             <Header>
                 <Logo>Admin</Logo>
-                <Link to="./">Home</Link>
+                <Link to="/">Home</Link>
             </Header>
+           
 
 
 
-            <Content>
-                <CreateItemButton onClick={() => setItem(prevState => !prevState)}
-                >
+            <Content >
+                <CreateItemButton onClick={() => setItem(prevState => (!prevState))}>
                     Create Item
+                
+                
                 </CreateItemButton>
+                
+                {item ? (
+                    <>
+                    <ReturnToAdminPage onClick={() => setItem(false)} />
+                    <CreateItem />
+                    </>
+                    )
+                    : null}
             </Content>
-            {item ? (
-                <CreateItem />
-            )
-        : undefined}
-
+           
+         
         </Wrapper>
         
         
@@ -38,6 +46,7 @@ export default AdminPage
 
 const Wrapper = styled.div`
 height: 100vh;
+position: relative;
 `
 const Header = styled.div`
 justify-content: space-between;
@@ -59,7 +68,18 @@ const Content = styled.div`
 height: 100%;
 border: 1px black solid;
 background-color: #141414
+
+
 `
+
+const ReturnToAdminPage = styled.div`
+position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+z-index: 0`
 
 const CreateItemButton = styled.button`
 margin: 8px 0 8px 45px;
@@ -72,7 +92,7 @@ margin: 8px 0 8px 45px;
     border-radius: 2rem;
     background: black;
     outline: none;
-    color: white;
+    color: purple;
     cursor: pointer;
     padding: 1rem 0.5rem;
     animation: animate 2s linear infinite;

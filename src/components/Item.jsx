@@ -44,7 +44,10 @@ import React from 'react';
 import styled from 'styled-components'
 import {Link} from "react-router-dom";
 
-function Item({ item, getItem }) {
+
+function Item({ item,  }) {
+
+
 
     // const handleGetBtn = () => {
     //     getItem(item['_id']);
@@ -56,12 +59,13 @@ function Item({ item, getItem }) {
             <P> {item.description}</P>
             <P> {item.price}</P>
             <P> {item.stock}</P>
+            
             {/* 
                 Make sure to send the punId in the URL, in combination with setting the <Route path="/update-pun/:id"> in App.js 
                 This will ensure that UpdatePun.js gets hold of the punId, through the variable "match"
             */}
             {/* <Link to={`/update-pun/${pun['_id']}`}><button>Update</button></Link> */}
-            <Link to={`/Item/${item['_id']}`}><button>Läs mer</button></Link>
+            <Link to={`/Item/${item['_id']}`}><button>See Product</button></Link>
             {/* <button onClick={handleGetBtn}>Delete</button> */}
         </ItemContainer>
     )
