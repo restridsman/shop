@@ -8,7 +8,7 @@ const Header = () => {
     return (
         <nav className= 'main-nav'>
             {/* <input className="search" type="text" placeholder="Search.."/> */}
-            <h1>REMAOS</h1>
+            <Link to="/"><h1>REMAOS</h1></Link>
             <div className="links">
                 <i class="fas fa-shopping-cart"></i>
                 <Link to="/Admin"><i class="fas fa-user-shield"></i></Link> 

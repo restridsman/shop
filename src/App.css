@@ -14,9 +14,10 @@ body{
   flex-direction: row;
   justify-content: space-between;
   background-color: rgba(221, 221, 221, 0.863);
-  padding: 50px;
-  margin-left: 8%;
-  margin-right: 8%;
+  padding: 50px 0 50px 0;
+  margin-left: 11%;
+  margin-right: 11%;
+  
 }
 
 .links{
@@ -31,14 +32,30 @@ i{
   color: black;
 }
 
+a{
+  text-decoration: none;
+  color: black;
+}
+
+.items-conatiner{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: 11%;
+  margin-right: 11%;
+  
+}
+
 .item-container{
   width: 350px;
   width: 300px;
-  margin: 50px ;
+  margin: 30px 0 30px 0;
   background-color: rgb(228, 228, 228);
   display: flex;
   flex-direction: column;
   overflow: hidden; 
+  
 }
 
 .text{
@@ -46,28 +63,25 @@ i{
   background-color: rgb(228, 228, 228);
   z-index: 100;
   font-size: 13px;
+  margin-bottom: 5px;
 }
 
+.stock{
+  font-style: italic;
 
+}
 .image{
   padding: 20px;
  
 }
 
-.items-conatiner{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-img{
+.images{
   width: 300px;
   height: 380px;
   transition: transform 0.3s;
 }
 
-img:hover{
+.images:hover{
   cursor: pointer;
   transform: scale(1.1);
 }
@@ -79,7 +93,86 @@ h3{
 
 p{
   margin-top: 5px;
-  font-weight: 100;
+  font-weight: 200;
 }
 
 
+.footer{
+  text-align: center;
+  height: 150px;
+  width: 100%;
+  background-color: rgb(238, 238, 238);
+  bottom:0;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.social-media{
+  width: 200px;
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-around;
+}
+
+.lol{
+  font-size: 40px;
+  color: rgb(180, 180, 180);
+}
+
+.single-item-container{
+
+  margin-left: 11%;
+  margin-right: 11%;
+  min-width: 450px;
+  min-height: 480px;
+}
+
+.single-item-text-conatiner{
+padding-top: 50px;
+padding-right: 30%;
+padding-bottom: 50px;
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+min-height: 480px;
+
+}
+
+.single-item-img{
+  width: 380px;
+  height: 480px;
+  float: left;
+  margin-right: 40px;
+}
+
+.single-item-price{
+font-weight: 500;
+
+}
+
+span{
+font-style: italic;
+color: grey;
+}
+
+.static-info{
+  font-size: 12px;
+  background-color: rgb(214, 214, 214);
+  padding: 5px;
+ 
+}
+
+.link-single-item{
+  font-weight: 400;
+  background-color: rgb(251, 131, 110);
+  color: whitesmoke;
+  width: 180px;
+  padding: 10px;
+  margin-left: 0;
+
+}
+
+.single-cart{
+  color: whitesmoke;
+}
