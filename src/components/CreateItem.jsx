@@ -91,14 +91,14 @@ align-items: center;
 
 const Item = styled.div`
 background-color: white;
-height: 500px;
-width: 500px;
-padding: 10px;
+height: 550px;
+width: 550px;
+padding: 20px;
 `
 
 const TitleCompartment = styled.tr`
 width: 500px;
-height: 100px;
+height: 50px;
 display: flex;
 justify-content: space-between;
 align-items: center;
@@ -110,25 +110,27 @@ align-items: top;
 
 const TitleInput = styled.input`
 width: 300px;
-height: 25px;
+height: 50px;
 align-self: center;
 `
 const DescriptionCompartment = styled.tr`
 width: 500px;
-height: 200px;
+height: 250px;
 display: flex;
 justify-content: space-between;
-align-items: top;
+align-items: center;
 `
 
 const DescriptionTitle = styled.h3`
+
 
 `
 
 const DescriptionInput = styled.input`
 width: 300px;
-height: 150px;
+height: 50px;
 align-self: center;
+align-items: top;
 `
 
 const InfoRow = styled.tr`
@@ -148,7 +150,7 @@ const PriceTitle = styled.h3`
 `
 const PriceInput = styled.input`
 width: 100px;
-height: 25px;
+height: 50px;
 `
 
 const StockCompartment = styled.th`
@@ -160,7 +162,7 @@ const StockTitle = styled.h3`
 `
 const StockInput = styled.input`
 width: 100px;
-height: 25px;
+height: 50px;
 `
 
 const CategoryCompartment = styled.th`
@@ -172,7 +174,7 @@ const CategoryTitle = styled.h3`
 `
 const CategorySelect = styled.select`
 width: 100px;
-height: 25px;
+height: 50px;
 `
 
 const ImageCompartment = styled.tr`
@@ -188,7 +190,7 @@ const ImageTitle = styled.h3`
 `
 const ImageInput = styled.input`
 width: 400px;
-height: 25px;
+height: 50px;
 `
 
 const Table = styled.table`
