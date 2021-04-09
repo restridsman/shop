@@ -1,16 +1,8 @@
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
-import AdminPage from '../admin/AdminPage'
-import HomePage from '../admin/HomePage'
-
-
-
-
 
 
 const Header = () => {
-
-
     
     return (
         <>

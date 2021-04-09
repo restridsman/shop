@@ -32,9 +32,22 @@ function ItemPage({ match }) {
                 <p> ∘  Expressleverans inom 48h</p>
             </div>
             <p className="single-item-price"> {item.price} SEK</p>
-            
-          
-            <p className="link-single-item">Lägg i varukorg <i class="fas fa-shopping-cart single-cart"></i></p>
+
+            <div className="size-buy-container">
+                
+                
+                <div class="dropdown">
+                    <button class="dropbtn">Storlek</button>
+                    <div class="dropdown-content">
+                        <a href="#">S</a>
+                        <a href="#">M</a>
+                        <a href="#">L</a>
+                    </div>
+                </div>
+
+                <p className="link-single-item">Lägg i varukorg <i class="fas fa-shopping-cart single-cart"></i></p>
+            </div>
+
         </div>
      </div>
     );

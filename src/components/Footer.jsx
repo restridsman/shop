@@ -9,7 +9,6 @@ function Footer() {
                 <i class="fab fa-instagram lol"></i>
                 <i class="fab fa-twitter-square lol"></i>
             </div>
-            {/* <p className="copy">&copy; Rebbe&Matte</p> */}
         </div>
     )
 }

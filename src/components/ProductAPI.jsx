@@ -5,7 +5,7 @@ function ProductAPI() {
     const [items, setItems] = useState([]);
 
     useEffect (()=>{
-        fetchProducts(); //fetchPuns{};
+        fetchProducts();
     }, [])
 
     const fetchProducts = async () => {
@@ -24,19 +24,7 @@ function ProductAPI() {
 
     return (
         <div>
-            <Items items={items} />
-            {/* <h1>Manage blabla</h1>
-            {
-                item.map( item => (
-                    <article key ={item['_id']}>
-                        <h2>{item.title}</h2>
-                        <p>{item.description}</p>
-                        <p>{item.price}</p>
-                        <p>{item.stock}</p>
-                    </article>
-                ))
-            } */}
-           
+            <Items items={items} />       
         </div>
     )
 }

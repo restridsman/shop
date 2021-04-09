@@ -6,7 +6,7 @@ const HomePage = () => {
     return (
         <div>
             <ProductAPI />
-            <Footer />
+            {/* <Footer /> */}
         </div>
     )
 }

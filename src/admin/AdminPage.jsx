@@ -8,9 +8,6 @@ import Items from '../components/Items'
 // import ProductAPI from '../components/ProductAPI'
 
 
-
-
-
 const AdminPage = () => {
 
 
@@ -34,88 +31,72 @@ const AdminPage = () => {
         }
     }  
 
-    
 
+    const handleDeleteBtn = () => {
+        deleteItem(item['_id']);
+    }
+
+    const deleteItem = async () => {
+        
+        try {
+            await fetch('http://localhost:5000/products/' + item['_id'], {
+                method: 'DELETE', // GET, POST, PATCH, DELETE
+            });
+        } catch (message) {
+            throw new Error(message);
+        }
+
+        fetchProducts();
+    }
+    
     const [newItem, setNewItem] = useState(false)
     
-    
-
-
     return (
 
         
         <Content>
-             <CreateItemButton onClick={() => setNewItem(prevState => !prevState)}
-             >
-                 Create Item
-             </CreateItemButton>
-                 {newItem ? (
-             <CreateItem />
-
-             )
-             : undefined}
-
-
-
-                <table>
-                    <thead>
-                        
-
-                    </thead>
-                    <tbody>
-                    <tr>
-                            <tr>
-
-                         
-                                <th>Product</th>
-                                <th>Description</th>
-                                <th>Price</th>
-                                <th>Stock</th>
-                    
-                            </tr>
-                            
-                            {item.map( Items => (
-                                <>
-
+                <CreateItemButton onClick={() => setNewItem(prevState => !prevState)}>Create Item</CreateItemButton>
+                    {newItem ? (<CreateItem />) : undefined}
+                    <table>
+                        <thead>
+                            </thead>
+                                <tbody>
                                 <tr>
-                                    <td>
-                                    {Items.title}
-                                    </td>
-                                    <td>
-                                    {Items.description}
-                                    </td>
-                                    <td>
-                                    {Items.price}
-                                    </td>
-                                    <td>
-                                    {Items.stock}
-                                    </td>
-                                    
-                                
-
-                                </tr>
-
-                                </>
-                            ))}
-                       
-                    
-                    </tr>
-                   
-                    
-                    
-                    </tbody>
-   
-                </table>
-             
-             <>
-          
-        </>
-
-
-                    
+                                    <tr>                         
+                                        <th>Product</th>
+                                        <th>Description</th>
+                                        <th>Price</th>
+                                        <th>Stock</th>
+                                    </tr>
+                                    {item.map( Items => (
+                                    <>
+                                        <tr>
+                                            <td>
+                                            {Items.title}
+                                            </td>
+                                            <td>
+                                            {Items.description}
+                                            </td>
+                                            <td>
+                                            {Items.price}
+                                            </td>
+                                            <td>
+                                            {Items.stock}
+                                            </td>
+                                            <button onClick={handleDeleteBtn}>
+                                                Delete
+                                            </button>
+                                        </tr>
+                                    </>
+                                ))}
+                            </tr>
+                        </tbody>
+                    </table>
+                <> 
+            </>                    
         </Content>
-                )
-        }
+    )
+}
 
 export default AdminPage
 
@@ -157,8 +138,4 @@ margin: 8px 0 8px 45px;
         box-shadow: 0 0 0 #fbfcfd;
     }
 }
-`
-const Table = styled.table`
-width: 50px;
-
 `
