@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import CreateItem from '../components/CreateItem'
 import Item from '../components/Item'
 import Items from '../components/Items'
+import CreateItemPage from './CreateItemPage'
 // import {Link} from 'react-router-dom'
 // import Items from '../components/Items';
 // import ProductAPI from '../components/ProductAPI'
@@ -50,7 +51,7 @@ const AdminPage = () => {
                  Create Item
              </CreateItemButton>
                  {newItem ? (
-             <CreateItem />
+             <CreateItemPage />
 
              )
              : undefined}
@@ -64,15 +65,13 @@ const AdminPage = () => {
                     </thead>
                     <tbody>
                     <tr>
-                            <tr>
-
-                         
-                                <th>Product</th>
-                                <th>Description</th>
-                                <th>Price</th>
-                                <th>Stock</th>
-                    
-                            </tr>
+                    <tr>
+                    <th>Product</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                                    
+                    </tr>
                             
                             {item.map( Items => (
                                 <>

@@ -11,6 +11,7 @@ const CreateItem = () => {
            
             <CreateItemContainer >
                 <Item>
+                    <CreateItemButton>CLICK ME</CreateItemButton>
                     <Table>
                       <Thead>
                         <TitleCompartment>
@@ -98,7 +99,7 @@ padding: 20px;
 
 const TitleCompartment = styled.tr`
 width: 500px;
-height: 50px;
+height: 100px;
 display: flex;
 justify-content: space-between;
 align-items: center;
@@ -115,14 +116,14 @@ align-self: center;
 `
 const DescriptionCompartment = styled.tr`
 width: 500px;
-height: 250px;
+height: 200px;
 display: flex;
 justify-content: space-between;
 align-items: center;
 `
 
 const DescriptionTitle = styled.h3`
-
+margin-top: 20px;
 
 `
 
@@ -143,6 +144,8 @@ justify-content: space-between;
 
 const PriceCompartment = styled.th`
 
+`
+const CreateItemButton = styled.button`
 `
 
 const PriceTitle = styled.h3` 
