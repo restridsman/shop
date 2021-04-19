@@ -1,102 +1,122 @@
 import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
-import CreateItem from '../components/CreateItem'
+import CreateItemForm from '../components/CreateItemForm'
 import Item from '../components/Item'
 import Items from '../components/Items'
+import axios from 'axios'
 // import {Link} from 'react-router-dom'
 // import Items from '../components/Items';
 // import ProductAPI from '../components/ProductAPI'
+
+
+
 
 
 const AdminPage = () => {
 
 
     const [item, setItem] = useState([]);
-
-    useEffect (()=>{
-        fetchProducts(); //fetchPuns{};
-    }, [])
-
-    const fetchProducts = async () => {
-        try{
-            const response = await fetch ('http://localhost:5000/products/');
-            if (!response.ok) {
-                throw new Error('HTTP Error! status: ' + response.status);
-             }
-            const data = await response.json();
-            setItem(data);
-            console.log(data);
-        }catch(error){
-            console.log(error);
-        }
+    const [newItem, setNewItem] = useState(false)
+    const [itemChange, setItemChange] = useState(false)
+    const fetchProducts = () => {
+        axios
+        .get('http://localhost:5000/products/')
+        .then(res => setItem(res.data))
+        .catch(err => console.log(err))
+  
     }  
 
+    useEffect (()=>{
+            fetchProducts();
+    }, [itemChange])
 
-    const handleDeleteBtn = () => {
-        deleteItem(item['_id']);
-    }
-
-    const deleteItem = async () => {
+   const handleDelete = (id) => {
+       
+        axios
+        .delete(`http://localhost:5000/products/${id}`)
+        .then(res => setItemChange(prevState => !prevState))
+        .catch(err => console.log(err))
         
-        try {
-            await fetch('http://localhost:5000/products/' + item['_id'], {
-                method: 'DELETE', // GET, POST, PATCH, DELETE
-            });
-        } catch (message) {
-            throw new Error(message);
-        }
+   }
+    
 
-        fetchProducts();
-    }
-    
-    const [newItem, setNewItem] = useState(false)
-    
+
     return (
 
         
         <Content>
-                <CreateItemButton onClick={() => setNewItem(prevState => !prevState)}>Create Item</CreateItemButton>
-                    {newItem ? (<CreateItem />) : undefined}
-                    <table>
-                        <thead>
-                            </thead>
-                                <tbody>
-                                <tr>
-                                    <tr>                         
-                                        <th>Product</th>
-                                        <th>Description</th>
-                                        <th>Price</th>
-                                        <th>Stock</th>
-                                    </tr>
-                                    {item.map( Items => (
-                                    <>
-                                        <tr>
-                                            <td>
-                                            {Items.title}
-                                            </td>
-                                            <td>
-                                            {Items.description}
-                                            </td>
-                                            <td>
-                                            {Items.price}
-                                            </td>
-                                            <td>
-                                            {Items.stock}
-                                            </td>
-                                            <button onClick={handleDeleteBtn}>
-                                                Delete
-                                            </button>
-                                        </tr>
-                                    </>
-                                ))}
-                            </tr>
-                        </tbody>
-                    </table>
-                <> 
-            </>                    
+             <CreateItemButton onClick={() => setNewItem(true)}
+             >
+                 Create Item       
+             </CreateItemButton>
+           
+             {newItem ? 
+             <CreateItemForm addItem={setItemChange} close={setNewItem}/>
+             : null
+             }
+                  {/* När knappen trycks ska form dyka upp mellan knappen och table */}
+
+                 
+                <table>
+                    <thead>
+                        
+
+                    </thead>
+                    <tbody>
+                    <tr>
+                   
+                    <th>Product</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    </tr>    
+                    
+                            
+                            {item.map( (Items, idx) => (
+                             
+
+                                <tr key={idx}>
+                                    <td>
+                                    {Items.title}
+                                    </td>
+                                    <td>
+                                    {Items.description}
+                                    </td>
+                                    <td>
+                                    {Items.price}
+                                    </td>
+                                    <td>
+                                    {Items.stock}
+                                    </td>
+                                    <Delete onClick={() => handleDelete(Items._id)} >
+                                        Delete
+                                    </Delete>
+
+                                
+
+                                </tr>
+
+                        
+                            ))}
+                       
+                    
+                  
+                   
+                    
+                    
+                    </tbody>
+   
+                </table>
+             
+             <>
+          
+        </>
+
+
+                    
         </Content>
-    )
-}
+                )
+        }
 
 export default AdminPage
 
@@ -106,6 +126,10 @@ const Content = styled.div`
 height: 100%;
 border: 1px black solid;
 background-color: #c0b0b0
+`
+const Delete = styled.td`
+        background: red;
+        cursor: pointer;
 `
 
 const CreateItemButton = styled.button`
@@ -138,4 +162,8 @@ margin: 8px 0 8px 45px;
         box-shadow: 0 0 0 #fbfcfd;
     }
 }
+`
+const Table = styled.table`
+width: 50px;
+
 `
