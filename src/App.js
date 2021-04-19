@@ -7,9 +7,8 @@ import {
 } from "react-router-dom";
 import ItemPage from './admin/ItemPage';
 import Header from './components/Header';
-import ProductAPI from './components/ProductAPI';
-import Items from './components/Items';
-import CreateItemPage from './admin/CreateItemPage';
+
+
 
 
 
@@ -37,8 +36,6 @@ function App() {
 
       </Route> */}
       <Route path={'/Admin'} component={AdminPage} />
-
-      <Route path={'/CreateItem'} component={CreateItemPage} />
       
     </div>
     </Router>

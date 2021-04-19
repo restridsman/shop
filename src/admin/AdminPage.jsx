@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
-import CreateItem from '../components/CreateItem'
+import CreateItemForm from '../components/CreateItemForm'
 import Item from '../components/Item'
 import Items from '../components/Items'
-import CreateItemPage from './CreateItemPage'
+import axios from 'axios'
 // import {Link} from 'react-router-dom'
 // import Items from '../components/Items';
 // import ProductAPI from '../components/ProductAPI'
@@ -16,29 +16,28 @@ const AdminPage = () => {
 
 
     const [item, setItem] = useState([]);
-
-    useEffect (()=>{
-        fetchProducts(); //fetchPuns{};
-    }, [])
-
-    const fetchProducts = async () => {
-        try{
-            const response = await fetch ('http://localhost:5000/products/');
-            if (!response.ok) {
-                throw new Error('HTTP Error! status: ' + response.status);
-             }
-            const data = await response.json();
-            setItem(data);
-            console.log(data);
-        }catch(error){
-            console.log(error);
-        }
+    const [newItem, setNewItem] = useState(false)
+    const [itemChange, setItemChange] = useState(false)
+    const fetchProducts = () => {
+        axios
+        .get('http://localhost:5000/products/')
+        .then(res => setItem(res.data))
+        .catch(err => console.log(err))
+  
     }  
 
-    
+    useEffect (()=>{
+            fetchProducts();
+    }, [itemChange])
 
-    const [newItem, setNewItem] = useState(false)
-    
+   const handleDelete = (id) => {
+       
+        axios
+        .delete(`http://localhost:5000/products/${id}`)
+        .then(res => setItemChange(prevState => !prevState))
+        .catch(err => console.log(err))
+        
+   }
     
 
 
@@ -46,18 +45,18 @@ const AdminPage = () => {
 
         
         <Content>
-             <CreateItemButton onClick={() => setNewItem(prevState => !prevState)}
+             <CreateItemButton onClick={() => setNewItem(true)}
              >
-                 Create Item
+                 Create Item       
              </CreateItemButton>
-                 {newItem ? (
-             <CreateItemPage />
+           
+             {newItem ? 
+             <CreateItemForm addItem={setItemChange} close={setNewItem}/>
+             : null
+             }
+                  {/* När knappen trycks ska form dyka upp mellan knappen och table */}
 
-             )
-             : undefined}
-
-
-
+                 
                 <table>
                     <thead>
                         
@@ -65,18 +64,18 @@ const AdminPage = () => {
                     </thead>
                     <tbody>
                     <tr>
-                    <tr>
+                   
                     <th>Product</th>
                     <th>Description</th>
                     <th>Price</th>
                     <th>Stock</th>
-                                    
-                    </tr>
+                    </tr>    
+                    
                             
-                            {item.map( Items => (
-                                <>
+                            {item.map( (Items, idx) => (
+                             
 
-                                <tr>
+                                <tr key={idx}>
                                     <td>
                                     {Items.title}
                                     </td>
@@ -89,16 +88,19 @@ const AdminPage = () => {
                                     <td>
                                     {Items.stock}
                                     </td>
-                                    
+                                    <Delete onClick={() => handleDelete(Items._id)} >
+                                        Delete
+                                    </Delete>
+
                                 
 
                                 </tr>
 
-                                </>
+                        
                             ))}
                        
                     
-                    </tr>
+                  
                    
                     
                     
@@ -124,6 +126,10 @@ const Content = styled.div`
 height: 100%;
 border: 1px black solid;
 background-color: #c0b0b0
+`
+const Delete = styled.td`
+        background: red;
+        cursor: pointer;
 `
 
 const CreateItemButton = styled.button`
